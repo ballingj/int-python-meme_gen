@@ -1,1 +1,1 @@
-from MemeGenerator import make_meme
+from .MemeGenerator import MemeGenerator

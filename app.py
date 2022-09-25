@@ -3,11 +3,12 @@ import os
 import requests
 from flask import Flask, render_template, abort, request
 
-# @TODO Import your Ingestor and MemeEngine classes
+from QuoteEngine import Ingestor, QuoteModel
+from MemeEngine import MemeGenerator
 
 app = Flask(__name__)
 
-meme = MemeEngine('./static')
+meme = MemeGenerator('./tmp')
 
 
 def setup():

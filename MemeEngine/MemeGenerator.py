@@ -4,47 +4,53 @@ pip install Pillow
 """
 
 from PIL import Image, ImageDraw, ImageFont
+from random import randint
 
 
 class MemeGenerator:
     
     def __init__(self, output_dir):
+        """Instantiate MemeGenerator."""
         self.output_dir = output_dir
     
-    def make_meme(self, img_path, text, author, width=500) -> str: #generated image path
+    def make_meme(self, img_path: str, text: str, 
+                    author: str, width: int = 500) -> str: #generated image path
         """
-        Create a Postcard With a Text Greeting
+        Create a Meme With a quote and suthor
 
         Arguments:
-            in_path {str} - - the file location for the input image.
-            out_path {str} - - the desired location for the output image.
-            crop {tuple} - - The crop rectangle, as a(left, upper, right, lower)-tuple. Default = None.
-            width {int} - - The pixel width value. Default = None.
+            img_path {str} - - the file location for the input image.
+            text {str} - - the body of he quote.
+            author {str} - - the author of the quote.
+            width {int} - - The pixel width value. Default = 500.
         Returns:
             str - - the file path to the output image.
         """
 
-        with Image.open(in_path) as im:
-            print(im.size)  # => (1331, 2567)
-            im_crop = im.crop(crop)
-            print(im_crop.size)  # => (450, 450)
-            #im_crop.save(out_path)
-            im_resized = im_crop.resize((im_crop.width * 2, im_crop.height*2))
-            print(im_resized.size)  # => (900, 900)
+        quote = f'''
+        {text}
+           - {author}
+        '''
+        
+        with Image.open(img_path) as img:
+            quote_pos = (randint(0, int(img.size[0]*0.6)), 
+            randint(0, int(img.size[1]*0.8)))
+            print(quote_pos, 'quote_pos')
+            print(width, "<=width")
+            if img.size[0] > 500:
+                ratio = width/float(img.size[0])
+                print(img.size, '<=  img size')  # debug line
+                height = int(ratio*float(img.size[1]))
+                img = img.resize((width, height), Image.NEAREST)
+                print(img.size, '< =  final size')  # debug line
 
-            if message is not None:
-                draw = ImageDraw.Draw(im_resized)
+            if quote is not None:
+                draw = ImageDraw.Draw(img)
                 font = ImageFont.truetype('./fonts/LilitaOne-Regular.ttf', size=20)
-                draw.text((10, 30), message, font=font, fill='white')
+                draw.text(quote_pos, quote, font=font, fill='white', 
+                            stroke_fill='black', stroke_width=2)
 
-        im_resized.save(output_dir)
-        return output_dir
-
-    # raise Exception('generate_postcard not implemented')
-
-
-if __name__ == '__main__':
-    print(generate_postcard('./imgs/img.jpg',
-                            './imgs/new_img.jpg',
-                            "Woof, woof!",
-                            (425, 875, 875, 1325)))
+        new_img = f'{randint(0,10000)}.jpg'
+        out_path = f'{self.output_dir}/{new_img}'
+        img.save(out_path)
+        return out_path
