@@ -16,7 +16,7 @@ class MemeGenerator:
     def make_meme(self, img_path: str, text: str, 
                     author: str, width: int = 500) -> str: #generated image path
         """
-        Create a Meme With a quote and suthor
+        Create a Meme With a quote and author
 
         Arguments:
             img_path {str} - - the file location for the input image.
@@ -33,7 +33,7 @@ class MemeGenerator:
         '''
         
         with Image.open(img_path) as img:
-            quote_pos = (randint(0, int(img.size[0]*0.6)), 
+            quote_pos = (randint(0, int(img.size[0]*0.45)), 
             randint(0, int(img.size[1]*0.8)))
             print(quote_pos, 'quote_pos')
             print(width, "<=width")
