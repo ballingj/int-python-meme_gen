@@ -20,6 +20,7 @@ pip install pandas
 pip install -U setuptoold
 pip install python-docx
 pip install requests
+pip install Pillow
 pip install flask -U
 ```
 
@@ -40,12 +41,25 @@ Here are some brief description of the roles-and-responsibilities of the sub-mod
 
 ##### MemeEngine
 This module contains the main engine MemeGenerator.py that combines an image, and the quote texts to generate the finished Meme.  This module is a background processes and not meant to interface the user.
+Third party modules required are the following:
+- Pillow for image manimpulations
+
 
 ##### QuoteEngine
 QuoteEngine contains the modules that parses the quotes to be embedded into an image before the meme can be generated.  This modules are background processes and not meant to interface the user.
+Third party modules required are the following:
+- pandas - for csv
+- setuptoold - for MS Doc parse
+- python-docx - for MS Doc parse
+- xpdf program appropriate for your OS
+
 
 ##### App.py
 This is the Web interface of the MemeGenerator.  This module is responsible for interfacing with Flask to generate the HTML interface used to create the meme.
+Third party modules required are the following:
+- requests - for saving image files from the internet when creating custom meme
+- Flask - for generating the web application
+
 
 ##### main.py
 This is the CLI version of the MemeGenerator.  This module uses an argument parser to allow the user to pass three optional arguments to create a custom meme.  The default is to pass no arguments, and the application will generate a random meme from stock photos and quotes.  Example usage:
