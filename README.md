@@ -7,7 +7,7 @@ There also includes an option to supply a custom image and custom quotes.
 This is the second project in the course Intermediate Python Nanodegree by Udacity
 
 There are two ways to generate a meme:
-1) Via CLI module called main.py, or
+1) Via CLI module called meme.py, or
 2) Via a web browser
 
 Within the CLI or Web app, you can generate a random meme or create a custom meme
@@ -61,19 +61,19 @@ Third party modules required are the following:
 - Flask - for generating the web application
 
 
-##### main.py
+##### meme.py
 This is the CLI version of the MemeGenerator.  This module uses an argument parser to allow the user to pass three optional arguments to create a custom meme.  The default is to pass no arguments, and the application will generate a random meme from stock photos and quotes.  Example usage:
 Generate a random meme
 ```
-python main.py
+python meme.py
 ```
 Help:
 ```
-python main.py -h
+python meme.py -h
 ```
 Output:
 ```
-usage: main.py [-h] [--path PATH] [--body BODY] [--author AUTHOR]
+usage: meme.py [-h] [--path PATH] [--body BODY] [--author AUTHOR]
 
 Create a random meme
 
@@ -84,5 +84,5 @@ options:
   --author AUTHOR  quote author to add to the image
 ```
 ```
-python main.py --path ./tmp/some_photo.jpg --body "Hello World!" --author "Shakespere"
+python meme.py --path ./tmp/some_photo.jpg --body "Hello World!" --author "Shakespere"
 ```
