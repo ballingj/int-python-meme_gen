@@ -17,7 +17,7 @@ You will need some third party modules to make the program work:
 
 ```
 pip install pandas
-pip install -U setuptoold
+pip install -U setuptools
 pip install python-docx
 pip install requests
 pip install Pillow
@@ -42,16 +42,16 @@ Here are some brief description of the roles-and-responsibilities of the sub-mod
 ##### MemeEngine
 This module contains the main engine MemeGenerator.py that combines an image, and the quote texts to generate the finished Meme.  This module is a background processes and not meant to interface the user.
 Third party modules required are the following:
-- Pillow for image manimpulations
+- Pillow for image manipulations
 
 
 ##### QuoteEngine
 QuoteEngine contains the modules that parses the quotes to be embedded into an image before the meme can be generated.  This modules are background processes and not meant to interface the user.
 Third party modules required are the following:
 - pandas - for csv
-- setuptoold - for MS Doc parse
-- python-docx - for MS Doc parse
-- xpdf program appropriate for your OS
+- setuptools - Python helper module to help with MS word parsing
+- python-docx - for MS word parsing
+- xpdf program installed appropriate for your OS
 
 
 ##### App.py
