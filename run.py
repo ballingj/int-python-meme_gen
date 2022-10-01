@@ -1,5 +1,6 @@
 # This is pre Encapsulation with Ingestor.py
-# from QuoteEngine import DocxIngestor, CSVIngestor, PDFIngestor, TxtIngestor, Ingestor
+# from QuoteEngine import DocxIngestor,
+#                   CSVIngestor, PDFIngestor, TxtIngestor, Ingestor
 
 # print(DocxIngestor.parse('./_data/DogQuotes/DogQuotesDOCX.docx'))
 # print(CSVIngestor.parse('./_data/DogQuotes/DogQuotesCSV.csv'))
