@@ -60,7 +60,6 @@ Third party modules required are the following:
 - requests - for saving image files from the internet when creating custom meme
 - Flask - for generating the web application
 
-
 ##### meme.py
 This is the CLI version of the MemeGenerator.  This module uses an argument parser to allow the user to pass three optional arguments to create a custom meme.  The default is to pass no arguments, and the application will generate a random meme from stock photos and quotes.  Example usage:
 Generate a random meme
@@ -84,5 +83,5 @@ options:
   --author AUTHOR  quote author to add to the image
 ```
 ```
-python meme.py --path ./tmp/some_photo.jpg --body "Hello World!" --author "Shakespere"
+python meme.py --path ./tmp/some_photo.jpg --body "To be or not to be..." --author "Shakespere"
 ```

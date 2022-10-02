@@ -79,18 +79,26 @@ def meme_post():
     # 3. Remove the temporary saved image.
 
     image_url = request.form.get('image_url')  # image url from the form
-    user_img = requests.get(image_url)
-    temp_img = f'./tmp/{random.randint(0,10000)}.jpg'
-    with open(temp_img, 'wb') as img:
-        img.write(user_img.content)
-
     body = request.form.get('body')  # grab body from the form
     author = request.form.get('author')  # grab author from the form
 
-    path = meme.make_meme(temp_img, body, author)
-    os.remove(temp_img)
+    try:
+        user_img = requests.get(image_url)
+    except requests.exceptions.ConnectionError as e:
+        print("ConnectionError due to invalid URL.")
+        return render_template('meme_error.html')
+    except requests.exceptions.MissingSchema as e:
+        print("Missing value in the Image URL.")
+        return render_template('meme_error.html')
+    else:
+        temp_img = f'./tmp/{random.randint(0,10000)}.jpg'
+        with open(temp_img, 'wb') as img:
+            img.write(user_img.content)
 
-    return render_template('meme.html', path=path)
+        path = meme.make_meme(temp_img, body, author)
+        os.remove(temp_img)
+
+        return render_template('meme.html', path=path)
 
 
 if __name__ == "__main__":
